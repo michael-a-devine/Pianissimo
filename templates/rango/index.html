@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+
+    <head>
+        <title>Rango</title>
+<!-- CSS
+        <link rel="stylesheet" href="{% static "css/base.css" %}" />
+JavaScript 
+        <script src="{% static "js/jquery.js" %}"></script>
+-->
+    </head>
+
+    <body>
+        <h1>Rango says...</h1>
+        <div>
+            hey there partner! <br />
+<!--            <strong>{{ boldmessage }}</strong><br /> -->
+        </div>
+        <div>
+        {% if categories %}
+        <ul>
+            {% for category in categories %}
+<!--                <li>{{ category.name }}</li> -->
+                    <li>
+                    <a href="/rango/category/{{ category.slug }}">{{ category.name }}</a>
+                    </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+        </div>
+<!--            <a href="/rango/show_category/">Show_Category</a><br /> -->
+        <div>
+            <a href="/rango/about/">About</a><br />
+
+            <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+
+    <!--    <img src="/static/images/rango.jpg" alt="Picture of Rango" /> -->
+        </div>       
+    </body>
+
+</html>
