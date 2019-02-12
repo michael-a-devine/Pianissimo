@@ -4,6 +4,10 @@ from django.conf.urls import url
 from rango import views
 
 
+### When there are more than one app:
+
+#app_name = 'rango'
+
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^index/', views.index, name='index'),
