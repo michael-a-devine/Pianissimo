@@ -6,9 +6,13 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>Rango says...</h1>
+    
     <div>
-        hey there partner! <br />
+        {% if user.is_authenticated %}
+            <h1>Rango says...Hello {{ user.username }}!</h1>
+        {% else %}
+            <h1>Rango says...Hello World!</h1>
+        {% endif %}
     </div>
 
     <div>
