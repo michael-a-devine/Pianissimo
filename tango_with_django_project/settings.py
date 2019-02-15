@@ -64,6 +64,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# browser-length session
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Persistent sessions
+#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# Ex: ifyou want your website’s cookies to expire after a two week (14 day) period
+# SESSION_COOKIE_AGE = 1209600
+
 ROOT_URLCONF = 'tango_with_django_project.urls'
 
 TEMPLATES = [
