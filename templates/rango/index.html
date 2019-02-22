@@ -7,45 +7,50 @@
 
 {% block body_block %}
     
-    <div>
+    <div class="jumbotron">
+        <h1 class="display-3">Rango says....</h1>
         {% if user.is_authenticated %}
-            <h1>Rango says...Hello {{ user.username }}!</h1>
+            <h1>hey there {{ user.username }}!</h1>
         {% else %}
-            <h1>Rango says...Hello World!</h1>
+            <h1>hey there partner!</h1>
         {% endif %}
     </div>
 
-    <div>
-    <h3>Most Liked Categories</h3>
-    {% if cat_likes %}
-    <ul>
-        {% for category in cat_likes %}
-            <li>
+    <div class="row marketing">
+        <div class="col-lg-6">
+        <h4>Most Liked Categories</h4>
+        <p>
+        {% if cat_likes %}
+        <ul class="list-group">
+            {% for category in cat_likes %}
+            <li class="list-group-item">
                 <a href="{% url 'show_category' category.slug %}">{{ category.name }}</a>
             </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-        <strong>There are no categories present.</strong>
-    {% endif %}
-    </div>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+        </p>
+        </div>
 
-    <h3>Most Viewed Pages</h3>
-    <div>
-    {% if page_views %}
-    <ul>
-        {% for page in page_views %}
-            <li>
+        <div class="col-lg-6">
+        <h4>Most Viewed Pages</h4>
+        <p>
+        {% if page_views %}
+        <ul class="list-group">
+            {% for page in page_views %}
+            <li class="list-group-item">
                 <a href="{{ page.url }}">{{ page.title }}</a>
             </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-        <strong>There are no pages present.</strong>
-    {% endif %}
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>There are no pages present.</strong>
+        {% endif %}
+        </p>
     </div>
-
-    <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
-    <p>visits: {{ visits }}</p>
-       
+</div>
+<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+    <p>visits: {{ visits }}</p>       
 {% endblock %}

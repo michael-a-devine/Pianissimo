@@ -16,7 +16,6 @@ from django.contrib.auth import logout
 
 from datetime import datetime
 
-
 def index(request):
 
     request.session.set_test_cookie()
@@ -83,7 +82,7 @@ def show_category(request, category_name_slug):
 
 @login_required
 def add_category(request):
-    form = CategoryForm()
+    form = CategoryForm()    
 
     # A HTTP POST?
     if request.method == 'POST':
@@ -103,10 +102,9 @@ def add_category(request):
             # The supplied form contained errors -
             # just print them to the terminal
             print(form.errors)
-
     # Will handle the bad form, new form, or no form supplied cases.
     # Render the form with error messages (if any).
-    return render(request, 'rango/add_category.html', {'form': form})
+    return render(request, 'rango/add_category.html', {'form':form})
 
 @login_required
 def add_page(request, category_name_slug):
@@ -164,4 +162,9 @@ def visitor_cookie_handler(request):
     # Update/set the visits cookie
 ##    response.set_cookie('visits', visits)
     request.session['visits'] = visits
+
+@login_required
+def restricted(request):
+#    return HttpResponse("Since you're logged in, you can see this text!")
+    return render(request, 'rango/restricted.html')
     
