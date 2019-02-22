@@ -16,6 +16,8 @@ from django.contrib.auth import logout
 
 from datetime import datetime
 
+from rango.webhose_search import run_query
+
 def index(request):
 
     request.session.set_test_cookie()
@@ -168,3 +170,14 @@ def restricted(request):
 #    return HttpResponse("Since you're logged in, you can see this text!")
     return render(request, 'rango/restricted.html')
     
+def search(request):
+    result_list = []
+    query = ""
+
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+        if query:
+            # Run our Webhose search function to get the results list!
+            result_list = run_query(query)
+
+    return render(request, 'rango/search.html', {'result_list': result_list, 'query': query})
