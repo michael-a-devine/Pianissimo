@@ -1,18 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-# Import the Category, Page model
 from rango.models import Category, Page
 
-from rango.forms import CategoryForm
-from rango.forms import PageForm
-from rango.forms import UserForm, UserProfileForm
+from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
 
 from datetime import datetime
 
