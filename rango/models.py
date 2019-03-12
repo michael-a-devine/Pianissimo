@@ -4,21 +4,21 @@ from django.template.defaultfilters import slugify
 
 from django.contrib.auth.models import User
 
+from django.core.validators import MaxValueValidator, MinValueValidator
+	
 class Category(models.Model):
-    name = models.CharField(max_length=128, unique=True)
-    views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
-    slug = models.SlugField(unique=True)
+        name = models.CharField(max_length=128, unique=True)
+        slug = models.SlugField(unique=True)
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
+        def save(self, *args, **kwargs):
+                self.slug = slugify(self.name)
+                super(Category, self).save(*args, **kwargs)
 
-    class Meta:
-        verbose_name_plural = 'categories'
+        class Meta:
+                verbose_name_plural = 'categories'
 
-    def __str__(self): # For Python 2, use __unicode__ too
-        return self.name
+        def __str__(self): # For Python 2, use __unicode__ too
+                return self.name
 
 class Page(models.Model):
     category = models.ForeignKey(Category)
@@ -29,12 +29,31 @@ class Page(models.Model):
     def __str__(self): # For Python 2, use __unicode__ too
         return self.title
 
+class Piece(models.Model):
+	title = models.CharField(max_length=128)
+	artist = models.CharField(max_length=50)
+	uploader = models.ForeignKey(User)
+	category = models.ForeignKey(Category)
+	rating = models.IntegerField(default=5)
+	description = models.CharField(max_length=300)
+	imgfile = models.ImageField
+	
+class Comment(models.Model):
+        song = models.ForeignKey(Piece)
+        name = models.CharField(max_length=50)
+        image = models.ImageField
+        comment = models.CharField(max_length=300)
+        score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
     user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-    website = models.URLField(blank=True)
+	
+    # The additional attributes we wish to include.
+    website = models.URLField()
+    bio = models.CharField(default = " ", max_length=500)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
     # Override the __unicode__() method to return out something meaningful!
