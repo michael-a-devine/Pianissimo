@@ -7,11 +7,19 @@
 {% endblock %}
 
 {% block body_block %}
-    This tutorial has been put together by Hazem
-
-    <img src="{% static "images/hack.jpg" %}" alt="Picture of Hack" />
-
-    <img src="{{ MEDIA_URL}}cat.jpg" alt="Picture of Cat" />
-
-    <p>You have visited this site: {{ visits }} times</p>
+	
+<h2> <u> About</u> </h2>
+<br>
+<div>
+	Music is a difficult and demanding art. 
+	Sometimes you want to be able to find what you want to play without the hassle of buying a book of music or composing a piece yourself. 
+	This is why we have created Pianissimo. With this application we are aiming to allow piano lovers to gain new ways to find and store piano sheet music.
+	Pianissimo expands the horizons of all piano enthusiasts, from the average hobbyist to the most accomplished composer. 
+	This web application includes many facilities, encompassing the ability to register an account, view and rate various sheet music from various composers, and the ability to search the vast reaches of the Internet to find sheet music.
+</div>
+    <br>
+<div>
+	<img src="{{ MEDIA_URL}}piano_clipart.jpg" alt="Picture of piano man aka lil'b" style="width:200px;height:200px;" />
+</div>
+	
 {% endblock %}
