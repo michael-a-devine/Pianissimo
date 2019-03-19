@@ -9,9 +9,9 @@
                                    initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="icon" href="{% static 'images/picon.ico' %}">
     <title>
-      Rango - {% block title %}How to Tango with Django!{% endblock %} 
+      Pianissimo - {% block title %}Symphonize the world, one piece at a time!{% endblock %} 
     </title>
     <!-- Bootstrap core CSS -->
     <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" 
@@ -27,7 +27,7 @@
     <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'index' %}">Rango</a>
+      <a class="navbar-brand" href="{% url 'index' %}">Pianissimo</a>
 
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
@@ -46,7 +46,7 @@
             <a class="nav-link" href="{% url 'restricted' %}">Restricted Page</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'add_category' %}">Add a New Category</a>
+            <a class="nav-link" href="{% url 'add_category' %}">Add a New Genre</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'auth_logout' %}?next=/rango/">Logout</a>

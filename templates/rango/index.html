@@ -8,17 +8,17 @@
 {% block body_block %}
     
     <div class="jumbotron">
-        <h1 class="display-3">Rango says....</h1>
+        <h1 class="display-3">Pianissimo</h1>
         {% if user.is_authenticated %}
-            <h1>hey there {{ user.username }}!</h1>
+            <h1>Welcome, {{ user.username }}!</h1>
         {% else %}
-            <h1>hey there partner!</h1>
+            <h1>Hello, piano lover!</h1>
         {% endif %}
     </div>
 
     <div class="row marketing">
         <div class="col-lg-6">
-        <h4>Most Liked Categories</h4>
+        <h4>Most Liked Genres</h4>
         <p>
         {% if cat_likes %}
         <ul class="list-group">
@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-lg-6">
-        <h4>Most Viewed Pages</h4>
+        <h4>Most Viewed Songs (All Time)</h4>
         <p>
         {% if page_views %}
         <ul class="list-group">
@@ -46,11 +46,11 @@
             {% endfor %}
         </ul>
         {% else %}
-            <strong>There are no pages present.</strong>
+            <strong>There are currently no songs present.</strong>
         {% endif %}
         </p>
     </div>
 </div>
-<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+<img src="{% static "images/pianocat.jpg" %}" alt="Picture of Piano Cat" />
     <p>visits: {{ visits }}</p>       
 {% endblock %}
