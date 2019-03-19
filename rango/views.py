@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from rango.models import Category, Page
+from rango.models import Category, Piece
 
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
@@ -24,9 +24,9 @@ def index(request):
     # Place the list in our context_dict dictionary
     # that will be passed to the template engine.
 
-    category_list_likes = Category.objects.order_by('-likes')[:5]
-    page_list_views = Page.objects.order_by('-views')[:5]
-    context_dict = {'cat_likes': category_list_likes,'page_views':page_list_views}
+    category_list_views = Category.objects.order_by('-id')[:5]
+    piece_list_rating = Piece.objects.order_by('-rating')[:5]
+    context_dict = {'cat_likes': category_list_views,'page_views':piece_list_rating}
 
     visitor_cookie_handler(request)
     context_dict['visits'] = request.session['visits']
