@@ -7,7 +7,7 @@
 
 {% block body_block %}
     
-    <div class="jumbotron">
+    <div class="narrow jumbotron">
         <h1 class="display-3">Pianissimo</h1>
         {% if user.is_authenticated %}
             <h1>Welcome, {{ user.username }}!</h1>
@@ -51,6 +51,6 @@
         </p>
     </div>
 </div>
-<img src="{% static "images/pianocat.jpg" %}" alt="Picture of Piano Cat" />
+<img src="{% static "images/pianocat.jpg" %}" alt="Picture of Piano Cat" style="width:400px;height:300px;"/>
     <p>visits: {{ visits }}</p>       
 {% endblock %}

@@ -66,12 +66,8 @@
 
     <div class="container-fluid">
       <div class="row">       
-      <div class="col-sm-3 col-md-2 sidebar">
-          {% block side_block %}
-              {% get_category_list category %}
-          {% endblock %}
-      </div>
-      <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+      
+      <div class="col-sm-15 offset-sm-15 col-md-7 offset-md-1 main">
           {% block body_block %}{% endblock %}
       </div>
       </div>
