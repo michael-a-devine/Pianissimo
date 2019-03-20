@@ -5,6 +5,8 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
 from django.core.validators import MaxValueValidator, MinValueValidator
+
+from datetime import datetime
 	
 class Category(models.Model):
         name = models.CharField(max_length=128, unique=True)
@@ -36,12 +38,13 @@ class Piece(models.Model):
 	category = models.ForeignKey(Category)
 	rating = models.IntegerField(default=5)
 	description = models.CharField(max_length=300)
-	imgfile = models.ImageField
+	imgfile = models.ImageField(default='')
+	date = models.DateTimeField(default=datetime.now())
 	
 class Comment(models.Model):
         song = models.ForeignKey(Piece)
-        name = models.CharField(max_length=50)
-        image = models.ImageField
+        name = models.ForeignKey(User)
+        image = models.ImageField(default='')
         comment = models.CharField(max_length=300)
         score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
 

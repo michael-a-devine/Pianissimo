@@ -12,8 +12,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 # Register your models here.
 
+class PieceAdmin(admin.ModelAdmin):
+	list_display =('title','category','uploader','rating')
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Page, PageAdmin)
-admin.site.register(Piece)
+admin.site.register(Piece, PieceAdmin)
 admin.site.register(Comment)
 admin.site.register(UserProfile)
