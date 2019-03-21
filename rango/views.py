@@ -25,7 +25,7 @@ def index(request):
     # that will be passed to the template engine.
 
     category_list_views = Category.objects.order_by('-id')[:5]
-    piece_list_rating = Piece.objects.order_by('-rating')[:5]
+    piece_list_rating = Piece.objects.order_by('artist')[:5]
     context_dict = {'cat_likes': category_list_views,'page_views':piece_list_rating}
 
     visitor_cookie_handler(request)

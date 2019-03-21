@@ -39,7 +39,7 @@ class Piece(models.Model):
 	artist = models.CharField(max_length=50)
 	uploader = models.ForeignKey(User)
 	category = models.ForeignKey(Category)
-	rating = models.FloatField(default=5)
+	#rating = models.FloatField(default=5)
 	
 	def rate(self):
 		rec = Comment.objects.values('song').annotate(Avg('score'))
@@ -53,20 +53,20 @@ class Piece(models.Model):
 	rating = property(rate)
 	
 	description = models.CharField(max_length=300)
-	imgfile = models.ImageField(default='')
+	imgfile = models.ImageField(default='',upload_to='sheets')
 	date = models.DateTimeField(default=datetime.now())
 	def __str__(self):
 		return self.title
 
 	
 class Comment(models.Model):
-        song = models.ForeignKey(Piece)
-        name = models.ForeignKey(User)
-        image = models.ImageField(default='')
-        comment = models.CharField(max_length=300)
-        score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
-def __str__(self):
-		return self.song
+	song = models.ForeignKey(Piece)
+	name = models.ForeignKey(User)
+	image = models.ImageField(default='',upload_to='profile_images')
+	comment = models.CharField(max_length=300)
+	score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+	def __str__(self):
+		return str(self.song) + " - " + str(self.name)
 
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
