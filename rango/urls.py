@@ -14,8 +14,8 @@ urlpatterns = [
     url(r'^about/', views.about, name='about'),
     url(r'^add_category/$', views.add_category, name='add_category'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.show_category, name='show_category'),
-    url(r'^category/(?P<category_name_slug>[\w\-]+)/add_piece/$', views.add_piece, name='add_piece'),    
-    url(r'^restricted/', views.restricted, name='restricted'),
-    url(r'search/$', views.search, name='search'),
+    url(r'^category/(?P<category_name_slug>[\w\-]+)/add_piece/$', views.add_piece, name='add_piece'),
     url(r'music/$', views.music, name='music'),
+    url(r'^register_profile/$', views.register_profile, name='register_profile'),
+    url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
 ]

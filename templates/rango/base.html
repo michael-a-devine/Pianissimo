@@ -38,14 +38,11 @@
           </li>
           <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'search' %}">Search</a>
-          
+          </li>         
 
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'restricted' %}">Restricted Page</a>
+            <a class="nav-link" href="{% url 'profile' user.username%}">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'add_category' %}">Add a New Genre</a>

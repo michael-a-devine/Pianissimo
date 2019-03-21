@@ -1,0 +1,31 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ selecteduser.username }} Profile
+{% endblock %}
+
+{% block body_block %}
+
+<h1>{{selecteduser.username}} Profile</h1>
+<img src="{{ MEDIA_URL }}{{userprofile.picture }}"
+    width="300"
+    height="300"
+    onerror="this.src='https://s3.amazonaws.com/codechef_shared/sites/default/files/uploads/pictures/ec97df1172f26ad800e6efef61100387.png'"
+    alt="{{selecteduser.username}}" />
+<br/>
+<div>
+    {% if selecteduser.username == user.username %}
+        <form method="post" action="." enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update" />
+        </form>
+    {% else %}
+    <p><strong>Website:</strong> <a href="{{userprofile.website}}">
+        {{userprofile.website}}</a></p>
+    {% endif %}
+</div>
+<div id="edit_profile"></div>
+
+{% endblock %}
