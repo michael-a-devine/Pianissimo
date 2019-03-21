@@ -13,15 +13,22 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
 from rango.webhose_search import run_query
-print(1)
+
 
 def music(request):
     piece_list_date = Piece.objects.order_by('-title')[:5]
     piece_list_rating = Piece.objects.order_by('artist')[:5]
     context_dict = {'piece_dates': piece_list_date,'piece_rates':piece_list_rating}
-    response = render(request, 'rango/music.html', context_dict)
-   
-    return response
+    result_list = []
+    if request.method == "POST":
+        query = request.POST['query'].strip()
+
+        if query:
+            result_list = run_query(query)
+            context_dict['query'] = query
+            context_dict['result_list'] = result_list
+    return render(request, 'rango/music.html', context_dict)
+
 def index(request):
 	request.session.set_test_cookie()
 
