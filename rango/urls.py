@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^category/(?P<category_name_slug>[\w\-]+)/add_piece/$', views.add_piece, name='add_piece'),    
     url(r'^restricted/', views.restricted, name='restricted'),
     url(r'search/$', views.search, name='search'),
+    url(r'music/$', views.music, name='music'),
 ]
