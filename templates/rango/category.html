@@ -9,20 +9,15 @@
     {% if category %}
         <h1>{{ category.name }}</h1>
 
-        {% if pages %}
+        {% if piece_list %}
             <ul>
-            {% for page in pages %}
-                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% for piece in piece_list %}
+                <li><a href="{{ page.url }}">{{ piece.title }}</a></li>
             {% endfor %}
             </ul>
         {% else %}
-            <strong>No pages currently in category.</strong>
+            <strong>No pieces currently in genre.</strong>
         {% endif %}
-
-        {% if user.is_authenticated %}
-            <a href="{% url 'add_page' category.slug %}">Add a Page</a>
-        {% endif %}
-
     {% else %}
         The specified category does not exist!
     {% endif %}
