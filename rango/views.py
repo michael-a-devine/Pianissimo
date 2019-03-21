@@ -15,26 +15,22 @@ from datetime import datetime
 from rango.webhose_search import run_query
 
 def index(request):
-
-    request.session.set_test_cookie()
+	request.session.set_test_cookie()
 
     # Query the database for a list of ALL categories currently stored.
     # Order the categories by no. likes in descending order.
     # Retrieve the top 5 only - or all if less than 5.
     # Place the list in our context_dict dictionary
     # that will be passed to the template engine.
-
-    category_list_views = Category.objects.order_by('-id')[:5]
-    piece_list_rating = Piece.objects.order_by('artist')[:5]
-    context_dict = {'cat_likes': category_list_views,'page_views':piece_list_rating}
-
-    visitor_cookie_handler(request)
-    context_dict['visits'] = request.session['visits']
-    
-    response = render(request, 'rango/index.html', context_dict)
-
-    # Return response back to the user, updating any cookies that need changed.
-    return response
+	category_list_views = Category.objects.order_by('-id')[:5]
+	piece_list_rating = Piece.objects.order_by('-score')[:5]
+	context_dict = {'cat_likes': category_list_views,'page_views':piece_list_rating}
+	
+	visitor_cookie_handler(request)
+	context_dict['visits'] = request.session['visits']
+	response = render(request, 'rango/index.html', context_dict)
+	# Return response back to the user, updating any cookies that need changed.
+	return response
 
 def about(request):
     if request.session.test_cookie_worked():
