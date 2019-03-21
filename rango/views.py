@@ -14,6 +14,13 @@ from datetime import datetime
 
 from rango.webhose_search import run_query
 
+
+def music(request):
+    piece_list_date = Piece.objects.order_by('-title')[:5]
+    piece_list_rating = Piece.objects.order_by('artist')[:5]
+    context_dict = {'piece_dates': piece_list_date,'piece_rates':piece_list_rating}
+    response = render(request, 'rango/music.html', context_dict)
+    return response
 def index(request):
 	request.session.set_test_cookie()
 

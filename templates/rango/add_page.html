@@ -2,14 +2,14 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    Adding a Page
+    Adding a Piece
 {% endblock %}
 
 {% block body_block %}
     {% if category %}            
         <form role="form" id="page_form" method="post" 
               action="/rango/category/{{ category.slug }}/add_page/">
-        <h2 class="form-signin-heading"> Add a Page to
+        <h2 class="form-signin-heading"> Add a Piece 
             <a href="/rango/category/{{category.slug}}/">
                 {{ category.name }}</a></h2>
         {% csrf_token %}

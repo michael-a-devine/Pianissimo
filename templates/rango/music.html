@@ -1,0 +1,50 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Index Page
+{% endblock %}
+
+{% block body_block %}
+    
+    <div class="narrow jumbotron">
+        <h1 class="display-3">Music Page</h1>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+        <h4>Recently Added Songs</h4>
+        <p>
+        {% if piece_dates %}
+        <ul class="list-group">
+            {% for piece in piece_dates %}
+            <li class="list-group-item">
+                <a href="{{ page.url }}">{{ piece.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+        </p>
+        </div>
+
+        <div class="col-lg-6">
+        <h4>Highest Rated Songs (All Time)</h4>
+        <p>
+        {% if piece_rates %}
+        <ul class="list-group">
+            {% for piece in piece_rates %}
+            <li class="list-group-item">
+                <a href="{{ page.url }}">{{ piece.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>There are currently no songs present.</strong>
+        {% endif %}
+        </p>
+    </div>
+</div>
+<a href="{% url 'search' %}">Search</a>     
+{% endblock %}
