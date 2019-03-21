@@ -69,7 +69,7 @@ class Piece(models.Model):
 class Comment(models.Model):
 	song = models.ForeignKey(Piece)
 	name = models.ForeignKey(User)
-	image = models.ImageField(default='',upload_to='profile_images')
+	#image = models.ImageField(default='',upload_to='profile_images')
 	comment = models.CharField(max_length=300)
 	score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
 	def __str__(self):
