@@ -39,9 +39,9 @@
         <p>
         {% if page_views %}
         <ul class="list-group">
-            {% for page in page_views %}
+            {% for piece in page_views %}
             <li class="list-group-item">
-                <a href="{{ page.url }}">{{ page.title }}</a>
+                <a href="{% url 'piece' piece.slug %}">{{ piece.title }}</a>
             </li>
             {% endfor %}
         </ul>

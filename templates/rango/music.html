@@ -19,7 +19,7 @@
         <ul class="list-group">
             {% for piece in piece_dates %}
             <li class="list-group-item">
-                <a href="{{ page.url }}">{{ piece.title }}</a>
+                <a href="{% url 'piece' piece.slug %}">{{ piece.title }}</a>
             </li>
             {% endfor %}
         </ul>
@@ -36,7 +36,7 @@
         <ul class="list-group">
             {% for piece in piece_rates %}
             <li class="list-group-item">
-                <a href="{{ page.url }}">{{ piece.title }}</a>
+                <a href="{% url 'piece' piece.slug %}">{{ piece.title }}</a>
             </li>
             {% endfor %}
         </ul>

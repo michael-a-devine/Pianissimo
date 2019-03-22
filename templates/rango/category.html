@@ -12,7 +12,7 @@
         {% if piece_list %}
             <ul>
             {% for piece in piece_list %}
-                <li><a href="{{ page.url }}">{{ piece.title }}</a></li>
+                <li><a href="{% url 'piece' piece.slug %}">{{ piece.title }}</a></li>
             {% endfor %}
             </ul>
         {% else %}

@@ -18,7 +18,41 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from rango.models import UserProfile
 
+def piece(request, piece_title_slug):
+    # Create a context dictionary which we can pass
+    # to the template rendering engine.
+    context_dict = {}
+    try:
+        # Can we find a piece title slug with the given name?
+        # If we can't, the .get() method raises a DoesNotExist exception.
+        # So the .get() method returns one model instance or raises an exception.
+        piece = Piece.objects.get(slug=piece_title_slug)
+        
 
+        # Retrieve all of the associated pages.
+        # Note that filter() will return a list of page objects or an empty list
+        #pages = Page.objects.filter(category=category)
+
+        # Adds our results list to the template context under name pages.
+        #context_dict['pages'] = pages
+        # We also add the category object from
+        # the database to the context dictionary.
+        # We'll use this in the template to verify that the category exists.
+        #context_dict['category'] = category
+        context_dict['piece'] = piece
+
+    except Piece.DoesNotExist:
+        # We get here if we didn't find the specified category.
+        # Don't do anything -
+        # the template will display the "no category" message for us.
+        #context_dict['category'] = None
+        context_dict['piece'] = None
+        
+
+    # Go render the response and return it to the client.
+    return render(request, 'rango/piece.html', context_dict)
+
+    
 def music(request):
     piece_list_date = Piece.objects.order_by('-title')[:5]
     piece_list_rating = Piece.objects.order_by('artist')[:5]

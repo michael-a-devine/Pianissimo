@@ -18,4 +18,6 @@ urlpatterns = [
     url(r'music/$', views.music, name='music'),
     url(r'^register_profile/$', views.register_profile, name='register_profile'),
     url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
+    #url(r'piece/$', views.piece, name='piece'),
+    url(r'^piece/(?P<piece_title_slug>[\w\-]+)/$', views.piece, name='piece'),
 ]

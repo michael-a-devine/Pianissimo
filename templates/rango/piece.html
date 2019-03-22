@@ -1,0 +1,19 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {{ piece.title}}
+	{% endblock %}
+
+{% block body_block %}   
+    {% if piece %}
+        <h1>{{ piece.title }}</h1>
+        <h1>{{ piece.artist }}</h1>
+		<h1>{{ piece.uploader }}</h1>
+		<h1>{{ piece.category }}</h1>
+		<h1>{{ piece.score }}</h1>
+		<h1>{{ piece.description }}</h1>
+    {% else %}
+        The specified piece does not exist!
+    {% endif %}
+{% endblock %}
