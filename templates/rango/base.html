@@ -27,37 +27,34 @@
     <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'index' %}">Pianissimo</a>
+      <a class="navbar-brand" href="{% url 'index' %} "onclick="this.style.fontStyle = 'italic';">Pianissimo</a>
 
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
           
 
 	  <li class="nav-item">
-            <a class="nav-link" href="{% url 'music' %}">Music</a>
+            <a class="nav-link" href="{% url 'music' %}" onclick="this.style.fontStyle = 'italic';">Music</a>
           </li>
           <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
+                <a class="nav-link" href="{% url 'about' %}"onclick="this.style.fontStyle = 'italic';">About</a>
           </li>         
 
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' user.username%}">Profile</a>
+            <a class="nav-link" href="{% url 'profile' user.username%} "onclick="this.style.fontStyle = 'italic';">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'add_category' %}">Add a New Genre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'auth_logout' %}?next=/rango/">Logout</a>
+            <a class="nav-link" href="{% url 'auth_logout' %}?next=/rango/"onclick="this.style.fontStyle = 'italic';">Logout</a>
           </li>
 
           {% else %}
  	  <li class="nav-item">
-            <a class="nav-link" href="{% url 'auth_login' %}">Login</a>
+            <a class="nav-link" href="{% url 'auth_login' %}"onclick="this.style.fontStyle = 'italic';">Login</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'registration_register' %}">Register</a>
+            <a class="nav-link" href="{% url 'registration_register' %}"onclick="this.style.fontStyle = 'italic';">Register</a>
           </li>
          
           {% endif %}
