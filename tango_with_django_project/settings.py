@@ -37,7 +37,7 @@ MEDIA_URL = '/media/'
 SECRET_KEY = 'wp(&)rrbd*^m-ftop3utzy1gjr9j7y22qsfm8yae1fk4k&5qmo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
