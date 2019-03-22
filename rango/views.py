@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from rango.models import Category, Piece
+from rango.models import Category, Piece, Comment
 
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
@@ -27,7 +27,7 @@ def piece(request, piece_title_slug):
         # If we can't, the .get() method raises a DoesNotExist exception.
         # So the .get() method returns one model instance or raises an exception.
         piece = Piece.objects.get(slug=piece_title_slug)
-        
+        comment_list = Comment.objects.filter(song=piece)
 
         # Retrieve all of the associated pages.
         # Note that filter() will return a list of page objects or an empty list
@@ -40,6 +40,7 @@ def piece(request, piece_title_slug):
         # We'll use this in the template to verify that the category exists.
         #context_dict['category'] = category
         context_dict['piece'] = piece
+        context_dict['comment_list'] = comment_list
 
     except Piece.DoesNotExist:
         # We get here if we didn't find the specified category.
@@ -47,6 +48,7 @@ def piece(request, piece_title_slug):
         # the template will display the "no category" message for us.
         #context_dict['category'] = None
         context_dict['piece'] = None
+        context_dict['comment_list'] = None
         
 
     # Go render the response and return it to the client.

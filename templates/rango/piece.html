@@ -7,12 +7,24 @@
 
 {% block body_block %}   
     {% if piece %}
-        <h1>{{ piece.title }}</h1>
-        <h1>{{ piece.artist }}</h1>
-		<h1>{{ piece.uploader }}</h1>
-		<h1>{{ piece.category }}</h1>
-		<h1>{{ piece.score }}</h1>
-		<h1>{{ piece.description }}</h1>
+        <h1><strong>{{ piece.title }}<strong></h1>
+        <h2><b>Artist:</b> <i>{{ piece.artist }}</i></h2>
+		<h2><b>Uploader:</b> <i>{{ piece.uploader }}</i></h2>
+		<h2><b>Genre:</b> <i>{{ piece.category }}</i></h2>
+		<h2><b>Overall Rating:</b> <i>{{ piece.rating }}</i></h2>
+		<h2><b>Description:</b> <i>{{ piece.description }}</i></h2>
+		<img src="{{ MEDIA_URL}}{{piece.imgfile}}" alt="cool" style="width:400px;height:300px;"/>
+		<h1><strong>Comments</strong></h1>
+		{% if comment_list %}
+			<ul class="list-group">
+			{% for comment in comment_list %}
+				<li class="list-group-item">
+					<h3><b>{{comment.name}}:</b> {{comment.comment}} <b>|</b> Rating: <i>{{ comment.score }}/10</i></h3>
+				</li>
+			{% endfor %}
+		{% else %}
+			<strong>There are currently no comments.</strong>
+		{% endif %}
     {% else %}
         The specified piece does not exist!
     {% endif %}
