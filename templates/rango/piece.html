@@ -13,7 +13,7 @@
 		<h2><b>Genre:</b> <i>{{ piece.category }}</i></h2>
 		<h2><b>Overall Rating:</b> <i>{{ piece.rating }}</i></h2>
 		<h2><b>Description:</b> <i>{{ piece.description }}</i></h2>
-		<img src="{{ MEDIA_URL}}{{piece.imgfile}}" alt="cool" style="width:400px;height:300px;"/>
+		<img src="{{ MEDIA_URL}}{{piece.imgfile}}" alt="cool" style="width:420px;height:594	px;"/>
 		<h1><strong>Comments</strong></h1>
 		{% if comment_list %}
 			<ul class="list-group">
@@ -25,7 +25,9 @@
 		{% else %}
 			<strong>There are currently no comments.</strong>
 		{% endif %}
+		<a href="">{{ piece.title }}</a>
     {% else %}
         The specified piece does not exist!
     {% endif %}
+	
 {% endblock %}

@@ -18,6 +18,9 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from rango.models import UserProfile
 
+
+    
+
 def piece(request, piece_title_slug):
     # Create a context dictionary which we can pass
     # to the template rendering engine.
