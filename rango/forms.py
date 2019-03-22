@@ -44,6 +44,7 @@ class UserProfileForm(forms.ModelForm):
     website = forms.URLField(required=False)
     bio = forms.CharField(required=True)
     picture = forms.ImageField(required=False)
+	
 
     class Meta:
         model = UserProfile
