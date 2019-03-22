@@ -14,6 +14,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class PieceAdmin(admin.ModelAdmin):
 	list_display =('title','category','uploader','rating')
+	prepopulated_fields = {'slug':('title',)}
 	
 class CommentAdmin(admin.ModelAdmin):
 	list_display=('song','name','score')

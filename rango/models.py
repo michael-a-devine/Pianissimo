@@ -40,6 +40,12 @@ class Piece(models.Model):
 	uploader = models.ForeignKey(User)
 	category = models.ForeignKey(Category)
 	score = models.FloatField(default=5)
+
+	slug = models.SlugField(unique=True, null = False)
+
+	def save(self, *args, **kwargs):
+                self.slug = slugify(self.title)
+                super(Piece, self).save(*args, **kwargs)
 	
 	def rate(self):
 		rec = Comment.objects.values('song').annotate(Avg('score'))
