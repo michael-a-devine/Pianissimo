@@ -2,17 +2,17 @@
 {% load staticfiles %}
 
 {% block title %}
-    {{ selecteduser.username }} Profile
+    {{ selecteduser.username }}'s Profile
 {% endblock %}
 
 {% block body_block %}
 
-<h1>{{selecteduser.username}} Profile</h1>
+<h1>{{selecteduser.username}}'s Profile</h1>
 <img src="{{ MEDIA_URL }}{{userprofile.picture }}"
     width="300"
     height="300"
-    onerror="this.src='https://s3.amazonaws.com/codechef_shared/sites/default/files/uploads/pictures/ec97df1172f26ad800e6efef61100387.png'"
-    alt="{{selecteduser.username}}" />
+	onerror="this.src='https://s3.amazonaws.com/codechef_shared/sites/default/files/uploads/pictures/ec97df1172f26ad800e6efef61100387.png'" 	
+    alt="{{ userprofile.picture }}" />
 <br/>
 <div>
     {% if selecteduser.username == user.username %}
@@ -22,7 +22,7 @@
             <input type="submit" value="Update" />
         </form>
     {% else %}
-    <p><strong>Website:</strong> <a href="{{userprofile.website}}">
+    <p><strong>a</strong> <a href="{{userprofile.website}}">
         {{userprofile.website}}</a></p>
     {% endif %}
 </div>
